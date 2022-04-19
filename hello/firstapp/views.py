@@ -14,6 +14,7 @@ def users(request, id, name):
 
 
 def index(request):
-    someList = [1, 2, 3, 4]
-    data = {"someList": someList}
+    somelist = [1, 2, 3, 4]
+    data = {"someList": somelist}
     return render(request, 'index.html', context=data)
+

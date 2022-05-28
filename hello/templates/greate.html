@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_javascript %}
+{% block content %}
+{% block title %}{% endblock title%}
+    <form role="form" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+    </form>
+{% if object_list   %}
+<div class="table-responsive">
+  <table class="table table-bordered table-sm">
+    <tr>
+      <th>First Name</th>
+      <th>Age</th>
+      <th>Register at</th>
+      <th>Edit/Delete</th>
+    </tr>
+    {% for person in object_list%}
+    <tr>
+      <td>{{person.order_name}}</td>
+      <td>{{person.id}}</td>
+      <td>{{person.order_dt|date:'d.m : y'}}</td>
+      <td><a href="del/{{person.id}}" class="btn btn-danger">Del</a>
+        or <a href="edit/{{person.id}}" class="btn btn-info">Edit</a>
+      </td>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+{% endblock content %}
